@@ -1,7 +1,7 @@
 const express = require('express');
-const ytdl = require('ytdl-core');
+const ytdl = require('@distube/ytdl-core');
 const app = express();
-const PORT = process.env.PORT || 5029;
+const PORT = process.env.PORT || 25010;
 const { GetListByKeyword } = require("./searchAPI.js");
 
 app.get('/search', async (req, res) => {
@@ -13,7 +13,6 @@ app.get('/search', async (req, res) => {
 		
 		const response = await GetListByKeyword(key, false, 10);		
 		res.header({
-		  'Content-Type': 'audio/mpeg',
 		  'Access-Control-Allow-Origin': '*'
 		});
 		res.send(response);
